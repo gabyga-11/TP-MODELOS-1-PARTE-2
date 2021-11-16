@@ -5,6 +5,8 @@
 
 class Ropa {
     //TODO: Ver si es realmente necesario
+public:
+    Ropa();
 };
 
 

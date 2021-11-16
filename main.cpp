@@ -1,6 +1,11 @@
 #include <iostream>
+#include "Filehandler.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Ropa prendas 
+    Filehandler archivo = Filehandler("datos.txt")
+
+
+
     return 0;
 }
