@@ -1,11 +1,10 @@
 #include <iostream>
-#include "Filehandler.h"
+#include "Carga.h"
 
 int main() {
-    Ropa prendas 
-    Filehandler archivo = Filehandler("datos.txt")
+    Carga* carga = new Carga();
 
 
-
+    delete carga;
     return 0;
 }

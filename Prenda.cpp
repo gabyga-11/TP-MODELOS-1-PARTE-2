@@ -1,7 +1,7 @@
 #include "Prenda.h"
-Prenda::Prenda(int nro, int tiempo) {
-    nroPrenda = nro;
-    tiempoLavado = tiempo;
+Prenda::Prenda() {
+    nroPrenda;
+    tiempoLavado = 0;
     cantCompatib = 0;
     compatib = nullptr;
 }

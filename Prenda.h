@@ -5,12 +5,12 @@
 class Prenda {
 private:
     int nroPrenda;
-    int** compatib; //Un vector de punteross //TODO: REVISAR
+    Prenda** compatib; //Un vector de punteross //TODO: REVISAR
     int cantCompatib; //Cantidad de compatibilidades de la prenda
     int tiempoLavado;
 
 public:
-    Prenda(int nro,int tiempo);
+    Prenda();
 
     void agregarCompatibilidad(int prendaCompatible); //TODO: REVISAR
 
