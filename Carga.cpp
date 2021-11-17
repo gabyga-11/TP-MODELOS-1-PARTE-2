@@ -16,7 +16,7 @@ Carga::Carga() {
 void Carga::procesar() {
     string linea = procesarPrimerasLineas();
     crearMatrizPrendas(linea);
-    eliminarConexionesIncompatibles(); //En base a lo que lee quita los linkeos
+    //eliminarConexionesIncompatibles(); //En base a lo que lee quita los linkeos
 }
 
 string Carga::procesarPrimerasLineas() {
@@ -51,7 +51,8 @@ void Carga::crearMatrizPrendas(string linea) {
     string input;
     obtenerCantPrendas(linea);
     grafo = new Prenda* [cantPrendas]; //grafo[1] sera la prenda 2
-    for (int i=0; i < cantPrendas ; i++){
+    grafo[0] = new Prenda; // Lo agrego para evitar que me conexione consigo mismo el primer elemento
+    for (int i=1; i < cantPrendas ; i++){
         grafo[i] = new Prenda;
         conexionarGrafo(i); //Agregar los linkeos con todos los puntos de la red
     }

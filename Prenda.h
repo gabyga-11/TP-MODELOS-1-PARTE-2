@@ -14,6 +14,8 @@ public:
 
     void agregarCompatibilidad(int prendaCompatible); //TODO: REVISAR
 
+    void conexionar(Prenda* compatible); //Se agrega en el vector de prendas
+
     int getNroPrenda();
 
     void setNroPrenda();
