@@ -32,6 +32,8 @@ public:
 
     void eliminarConexionesIncompatibles();
 
+    void devolverIncompatibilidades(int &prenda1, int &prenda2);
+
     ~Carga();
 };
 

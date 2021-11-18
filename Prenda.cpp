@@ -12,7 +12,7 @@ void Prenda::conexionar(Prenda *compatible) {
         compatib = new Prenda* [1];
         cantCompatib++;
         compatib[0] = compatible;
-        cout << "compatib[" << 0 << "] = " << compatib[0]->getNroPrenda() << endl;
+        //cout << "compatib[" << 0 << "] = " << compatib[0]->getNroPrenda() << endl;
     } else {
         Prenda** nuevoCompatib = new Prenda* [cantCompatib+1];
         for (int i = 0 ; i < cantCompatib ; i++){
@@ -28,6 +28,31 @@ void Prenda::conexionar(Prenda *compatible) {
         }
          */
     }
+}
+
+void Prenda::eliminarConexion(Prenda *incompatible) {
+    Prenda** nuevoCompatib = new Prenda* [cantCompatib-1];
+    int j = 0;
+    for (int i = 0 ; i < cantCompatib ; i++){
+        //cout << i << " distinto de " << incompatible->getNroPrenda() <<"? " << (i != incompatible->getNroPrenda()) << endl;
+        if (compatib[i]->getNroPrenda() != incompatible->getNroPrenda()) {
+            nuevoCompatib[j] = compatib[i];
+            j++;
+        }
+    }
+    cantCompatib--;
+    delete [] compatib;
+    compatib = nuevoCompatib;
+    cout << endl;
+    /*
+    for (int i = 0 ; i < cantCompatib ; i++){
+        cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
+
+        //if (nroPrenda == 4) {
+            //cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
+        //}
+    }
+    */
 }
 
 int Prenda::getNroPrenda() {

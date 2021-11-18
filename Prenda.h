@@ -17,6 +17,8 @@ public:
 
     void conexionar(Prenda* compatible); //Se agrega en el vector de prendas
 
+    void eliminarConexion(Prenda* incompatible);
+
     int getNroPrenda();
 
     void setNroPrenda();
