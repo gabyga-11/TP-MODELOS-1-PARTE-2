@@ -41,7 +41,6 @@ void Carga::obtenerCantPrendas(string primerLinea){
     primeraLinea >> input;
     primeraLinea >> input;
     primeraLinea >> input;
-    primeraLinea >> input;
     cantPrendas = stoi(input);
     primeraLinea >> input;
     cantIncompat = stoi(input);
@@ -51,21 +50,30 @@ void Carga::crearMatrizPrendas(string linea) {
     string input;
     obtenerCantPrendas(linea);
     grafo = new Prenda* [cantPrendas]; //grafo[1] sera la prenda 2
-    grafo[0] = new Prenda; // Lo agrego para evitar que me conexione consigo mismo el primer elemento
+    grafo[0] = new Prenda(1); // Lo agrego para evitar que me conexione consigo mismo el primer elemento
+    cout << "Agrego prenda 1" << endl;
     for (int i=1; i < cantPrendas ; i++){
-        grafo[i] = new Prenda;
+        grafo[i] = new Prenda(i+1);
         conexionarGrafo(i); //Agregar los linkeos con todos los puntos de la red
+        cout << "Agrego prenda "<< i+1 << endl;
     }
 }
 
 void Carga::conexionarGrafo(int indiceUltimoElemento) {
-    for (int j = 0; j < indiceUltimoElemento-1 ; j++){
+    for (int j = 0; j < indiceUltimoElemento ; j++) {
+        //cout << "grafo[" << indiceUltimoElemento << "]->conexionar(grafo[" << j << "])" << endl;
         grafo[indiceUltimoElemento]->conexionar(grafo[j]);
+        //cout << "grafo[" << j << "]->conexionar(grafo[" << indiceUltimoElemento << "])" << endl;
         grafo[j]->conexionar(grafo[indiceUltimoElemento]);
+        //TODO: Conexionado desde carga OK
     }
+    //cin.ignore();
 }
 
 Carga::~Carga() {
     archivo.close();
+    for (int i=1; i < cantPrendas ; i++){
+        delete grafo[i];
+    }
     delete grafo; //TODO SACAR DE ACA
 }

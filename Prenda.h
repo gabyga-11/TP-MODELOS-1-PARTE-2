@@ -1,6 +1,7 @@
 #ifndef TP_MODELOS_1_PARTE_2_PRENDA_H
 #define TP_MODELOS_1_PARTE_2_PRENDA_H
-
+using namespace std;
+#include <iostream>
 
 class Prenda {
 private:
@@ -8,9 +9,9 @@ private:
     Prenda** compatib; //Un vector de punteross //TODO: REVISAR
     int cantCompatib; //Cantidad de compatibilidades de la prenda
     int tiempoLavado;
-
+    int nroLavado;
 public:
-    Prenda();
+    Prenda(int nroPrenda);
 
     void agregarCompatibilidad(int prendaCompatible); //TODO: REVISAR
 
@@ -26,6 +27,7 @@ public:
 
     int getCantCompatib();
 
+    ~Prenda();
 };
 
 
