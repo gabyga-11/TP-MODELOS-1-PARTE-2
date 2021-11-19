@@ -32,10 +32,11 @@ void Prenda::conexionar(Prenda *compatible) {
 
 void Prenda::eliminarConexion(Prenda *incompatible) {
     Prenda** nuevoCompatib = new Prenda* [cantCompatib-1];
+    int prendaAEliminar = incompatible->getNroPrenda();
     int j = 0;
     for (int i = 0 ; i < cantCompatib ; i++){
         //cout << i << " distinto de " << incompatible->getNroPrenda() <<"? " << (i != incompatible->getNroPrenda()) << endl;
-        if (compatib[i]->getNroPrenda() != incompatible->getNroPrenda()) {
+        if (compatib[i]->getNroPrenda() != prendaAEliminar) {
             nuevoCompatib[j] = compatib[i];
             j++;
         }
@@ -43,20 +44,32 @@ void Prenda::eliminarConexion(Prenda *incompatible) {
     cantCompatib--;
     delete [] compatib;
     compatib = nuevoCompatib;
-    cout << endl;
+    //cout << endl;
     /*
-    for (int i = 0 ; i < cantCompatib ; i++){
-        cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
-
-        //if (nroPrenda == 4) {
-            //cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
-        //}
+    if (nroPrenda == 4) {
+        cout << endl << 4 << " " << prendaAEliminar << endl;
     }
-    */
+    for (int i = 0 ; i < cantCompatib ; i++){
+        //cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
+
+        if (nroPrenda == 4) {
+            cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
+        }
+    }
+     */
+
 }
 
 int Prenda::getNroPrenda() {
     return nroPrenda;
+}
+
+void Prenda::setTiempoLavado(int tiempoLavado) {
+    this->tiempoLavado = tiempoLavado;
+}
+
+int Prenda::getLavado() {
+    return this->tiempoLavado;
 }
 
 Prenda::~Prenda() {

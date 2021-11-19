@@ -25,9 +25,11 @@ public:
 
     int getTiempoLavado();
 
-    void setTiempoLavado();
+    void setTiempoLavado(int tiempoLavado);
 
     int getCantCompatib();
+
+    int getLavado();
 
     ~Prenda();
 };

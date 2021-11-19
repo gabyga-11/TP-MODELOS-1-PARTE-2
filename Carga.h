@@ -32,7 +32,17 @@ public:
 
     void eliminarConexionesIncompatibles();
 
-    void devolverIncompatibilidades(int &prenda1, int &prenda2);
+    void leerIncompatibilidades(int &prenda1, int &prenda2);
+
+    void agregarTiempoLavados();
+
+    void leerTiempo(int &prenda, int &tiempoLavado);
+
+    Prenda** getGrafo();
+
+    int getCantPrendas();
+
+    int getCantIncompat();
 
     ~Carga();
 };

@@ -16,6 +16,7 @@ void Carga::procesar() {
     string linea = procesarPrimerasLineas();
     crearMatrizPrendas(linea);
     eliminarConexionesIncompatibles(); //En base a lo que lee quita los linkeos
+    agregarTiempoLavados();
 }
 
 string Carga::procesarPrimerasLineas() {
@@ -24,7 +25,7 @@ string Carga::procesarPrimerasLineas() {
     while (linea[0] == 'c'){
         getline(archivo, linea);
     }
-    cout << linea;
+    //cout << linea;
     return linea;
 }
 
@@ -72,14 +73,15 @@ void Carga::conexionarGrafo(int indiceUltimoElemento) {
 void Carga::eliminarConexionesIncompatibles() {
     int prenda1, prenda2;
     for (int i = 0 ; i < cantIncompat ; i++) {
-        devolverIncompatibilidades(prenda1,prenda2);
+        leerIncompatibilidades(prenda1, prenda2);
         //cout << "grafo[" << prenda1-1 << "]->eliminarConexion(grafo[" << prenda2-1 << "])";
         //TODO: Se llaman a todas las eliminaciones correspondientes
         grafo[prenda1-1]->eliminarConexion(grafo[prenda2-1]);
+        grafo[prenda2-1]->eliminarConexion(grafo[prenda1-1]);
     }
 }
 
-void Carga::devolverIncompatibilidades(int &prenda1, int &prenda2) {
+void Carga::leerIncompatibilidades(int &prenda1, int &prenda2) {
     string linea,input;
     getline(archivo, linea);
     istringstream lineaIncompatibilidades(linea);
@@ -89,6 +91,40 @@ void Carga::devolverIncompatibilidades(int &prenda1, int &prenda2) {
     lineaIncompatibilidades >> input;
     prenda2 = stoi(input);
     //cout << prenda1 << " " << prenda2; //SE PROCESA CORRECTAMENTE. Estan procesados todos!
+}
+
+void Carga::agregarTiempoLavados() {
+    int prenda, tiempoLavado;
+    for (int i = 0 ;  i < cantPrendas ; i++){
+        leerTiempo(prenda,tiempoLavado);
+        //cout << "grafo[" << prenda-1 << "]->setTiempoLavado(" << tiempoLavado << ")" << endl;
+        grafo[prenda-1]->setTiempoLavado(tiempoLavado);
+    }
+
+
+}
+
+void Carga::leerTiempo(int &prenda, int &tiempoLavado) {
+    string linea,input;
+    getline(archivo, linea);
+    istringstream lineaTiempo(linea);
+    lineaTiempo >> input;
+    lineaTiempo >> input;
+    prenda = stoi(input);
+    lineaTiempo >> input;
+    tiempoLavado = stoi(input);
+}
+
+Prenda ** Carga::getGrafo() {
+    return grafo;
+}
+
+int Carga::getCantPrendas() {
+    return cantPrendas;
+}
+
+int Carga::getCantIncompat() {
+    return cantIncompat;
 }
 
 Carga::~Carga() {
