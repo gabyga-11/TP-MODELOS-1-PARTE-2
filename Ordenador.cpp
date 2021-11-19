@@ -26,6 +26,7 @@ void Ordenador::procesar() {
     for (int i = 0 ; i < cantPrendas ; i++){
         cout << grafoOrdTiempos[i] << endl;
     }*/ //TODO: Quedo bien ordenado!
+    ordenarCadaPrendaPorCompatibilidades();
 }
 
 void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort
@@ -43,5 +44,10 @@ void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort
             }
         }
         j++;
+    }
+}
+void Ordenador::ordenarCadaPrendaPorCompatibilidades() { //Se ordena el vector con las compatibilidades de mayor a menor
+    for (int i = 0 ; i < cantPrendas ; i++){
+        grafo[i]->ordenarCompatibilidades();
     }
 }

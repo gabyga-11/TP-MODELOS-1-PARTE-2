@@ -5,8 +5,11 @@
 int main() {
     Carga* carga = new Carga();
 
-    Ordenador ordenador = Ordenador(carga->getGrafo(),carga->getCantPrendas(),carga->getCantIncompat());
+    Ordenador* ordenador = new Ordenador(carga->getGrafo(),carga->getCantPrendas(),carga->getCantIncompat());
 
+    
+
+    delete ordenador;
     delete carga;
     return 0;
 }

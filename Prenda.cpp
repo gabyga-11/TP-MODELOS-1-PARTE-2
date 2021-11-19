@@ -60,12 +60,42 @@ void Prenda::eliminarConexion(Prenda *incompatible) {
 
 }
 
+void Prenda::ordenarCompatibilidades() {
+    bool intercambio = true;
+    int j=0;
+    Prenda* aux;
+    while (intercambio && j < cantCompatib){
+        intercambio = false;
+        j = 0;
+        for (int i=1 ; i<cantCompatib-j ; i++){
+            if (compatib[i-1]->cantCompatib < compatib[i]->cantCompatib ){
+                aux = compatib[i-1];
+                compatib[i-1] = compatib[i];
+                compatib[i] = aux;
+                intercambio = true;
+            }
+        }
+        j++;
+    }
+    /*
+    cout << endl << "PRENDA NRO " << nroPrenda << endl;
+    for (int j = 0 ; j < cantCompatib ; j++){
+        cout << "compatib[" << j << "] => PRENDA " << compatib[j]->getNroPrenda() << " con compatibilidades quantity " << compatib[j]->getCantCompatib() << endl;
+    }
+    cout << "CANTIDAD DE COMPATIBILIDADES: " <<cantCompatib << endl;
+     */ //TODO: Queda bien ordenado cada vector de punteros!!!!!!!!1
+}
+
 int Prenda::getNroPrenda() {
     return nroPrenda;
 }
 
 void Prenda::setTiempoLavado(int tiempoLavado) {
     this->tiempoLavado = tiempoLavado;
+}
+
+int Prenda::getCantCompatib() {
+    return cantCompatib;
 }
 
 int Prenda::getLavado() {

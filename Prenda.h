@@ -19,6 +19,8 @@ public:
 
     void eliminarConexion(Prenda* incompatible);
 
+    void ordenarCompatibilidades();
+
     int getNroPrenda();
 
     void setNroPrenda();
