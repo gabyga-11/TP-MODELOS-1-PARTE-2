@@ -128,6 +128,10 @@ void Prenda::setNroLavado(int nroLavado) {
     this->nroLavado = nroLavado;
 }
 
+int Prenda::getNroLavado() {
+    return nroLavado;
+}
+
 Prenda::~Prenda() {
     for (int i = 0 ; i < cantCompatib; i++){
         compatib[i] = nullptr;

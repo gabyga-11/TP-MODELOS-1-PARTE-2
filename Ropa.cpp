@@ -140,12 +140,14 @@ void Ropa::realizarUnLavado() {
                 terminoLavado = true;
 
                 //TODO: SE PROCESAN TODAS LAS PRENDAS!!! EUREKAAAAAA
+                /*
                 cout << "Se termino el lavado nro " << nroLavado << endl;
                 cout << "Con un tiempo de minutos " << tiempoTotalPorLavado << endl;
                 cout << "Que tiene a las prendas: [ ";
                 for (int i = 0 ; i < cantPrendasEnLavado ; i++){
                     cout << vectorPrendasEnLavado[i] << " ";
                 } cout << " ]\n";
+                 */
             }
         }
     }
@@ -227,11 +229,8 @@ Prenda ** Ropa::getGrafo() {
 
 
 Ropa::~Ropa() {
-    for (int i=1; i < cantPrendas ; i++){
-        delete grafo[i];
-    }
     delete [] visitados;
-    delete grafo;
+    grafo = nullptr;
     vectorPrendasEnLavado.clear();
 }
 

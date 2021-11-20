@@ -40,6 +40,8 @@ public:
 
     void setNroLavado(int nroLavado);
 
+    int getNroLavado();
+
     ~Prenda();
 };
 
