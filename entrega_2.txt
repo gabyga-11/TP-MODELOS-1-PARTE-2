@@ -1,0 +1,22 @@
+
+
+//Ahora que tengo la prenda a revisar, la agarro y la agrego al lavado 1 [nroLavado, una variable],
+//con su tiempo como tiempoTotalPorLavado
+//Guardo la prenda en un vector dinamico vectorPrendasEnLavado
+
+
+//Me fijo en su vector de punteros de la prenda recien agregada para ESTABLECES PROXIMA PRENDA
+//Sumo al lavado a la prenda no visitada de 0 a n (osea con mas compatibilidades)
+//Que A SU VEZ DEBERA SER COMPATIBLE CON TODAS LAS PRENDAS PREVIAS A LA ULTIMA AGREGADA
+//Para eso, reviso en el vector compatibilidades de la posible prenda nueva
+//Y verifico que esten todas las prendas del vector vectorPrendasEnLavado
+
+
+//SI ENCUENTRO UNA prenda q cumple, la sumo al vectorPrendasEnLavado;
+// y veo si su tiempo es el nuevo tiempoTotalPorLavado
+
+//SI NO ENCUENTRO UNA PRENDA en la ultima prenda agregada, que cumpla las condiciones dichas,
+//Se da por terminado el lavado, lo que significa que
+//Debere recorrer el vectorPrendasEnLavado para agregar como atributos a cada una de dichas prendas
+//El nroLavado, que quedo fijo en esta iteracion
+//El tiempoLavado, que se fue actualizando cada vez que se agregaba una prenda al lavado

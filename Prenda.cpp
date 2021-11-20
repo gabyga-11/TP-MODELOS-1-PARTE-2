@@ -13,7 +13,6 @@ void Prenda::conexionar(Prenda *compatible) {
         compatib = new Prenda* [1];
         cantCompatib++;
         compatib[0] = compatible;
-        //cout << "compatib[" << 0 << "] = " << compatib[0]->getNroPrenda() << endl;
     } else {
         Prenda** nuevoCompatib = new Prenda* [cantCompatib+1];
         for (int i = 0 ; i < cantCompatib ; i++){
@@ -23,11 +22,6 @@ void Prenda::conexionar(Prenda *compatible) {
         cantCompatib++;
         delete [] compatib;
         compatib = nuevoCompatib;
-        /*
-        for (int i = 0 ; i < cantCompatib ; i++){
-            cout << "compatib[" << i << "] = " << compatib[i]->getNroPrenda() << endl;
-        }
-         */
     }
 }
 
@@ -36,7 +30,6 @@ void Prenda::eliminarConexion(Prenda *incompatible) {
     int prendaAEliminar = incompatible->getNroPrenda();
     int j = 0;
     for (int i = 0 ; i < cantCompatib ; i++){
-        //cout << i << " distinto de " << incompatible->getNroPrenda() <<"? " << (i != incompatible->getNroPrenda()) << endl;
         if (compatib[i]->getNroPrenda() != prendaAEliminar) {
             nuevoCompatib[j] = compatib[i];
             j++;
@@ -45,20 +38,6 @@ void Prenda::eliminarConexion(Prenda *incompatible) {
     cantCompatib--;
     delete [] compatib;
     compatib = nuevoCompatib;
-    //cout << endl;
-    /*
-    if (nroPrenda == 4) {
-        cout << endl << 4 << " " << prendaAEliminar << endl;
-    }
-    for (int i = 0 ; i < cantCompatib ; i++){
-        //cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
-
-        if (nroPrenda == 4) {
-            cout << "compatib [" << i << "] = " << compatib[i]->getNroPrenda() << endl;
-        }
-    }
-     */
-
 }
 
 void Prenda::ordenarCompatibilidades() {
@@ -78,13 +57,6 @@ void Prenda::ordenarCompatibilidades() {
         }
         j++;
     }
-    /*
-    cout << endl << "PRENDA NRO " << nroPrenda << endl;
-    for (int j = 0 ; j < cantCompatib ; j++){
-        cout << "compatib[" << j << "] => PRENDA " << compatib[j]->getNroPrenda() << " con compatibilidades quantity " << compatib[j]->getCantCompatib() << endl;
-    }
-    cout << "CANTIDAD DE COMPATIBILIDADES: " <<cantCompatib << endl;
-     */ //TODO: Queda bien ordenado cada vector de punteros!!!!!!!!1
 }
 
 int Prenda::getNroPrenda() {

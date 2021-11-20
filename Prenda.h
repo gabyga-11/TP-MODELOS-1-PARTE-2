@@ -14,8 +14,6 @@ private:
 public:
     Prenda(int nroPrenda);
 
-    void agregarCompatibilidad(int prendaCompatible); //TODO: REVISAR
-
     void conexionar(Prenda* compatible); //Se agrega en el vector de prendas
 
     void eliminarConexion(Prenda* incompatible);
@@ -23,8 +21,6 @@ public:
     void ordenarCompatibilidades();
 
     int getNroPrenda();
-
-    void setNroPrenda();
 
     void setTiempoLavado(int tiempoLavado);
 

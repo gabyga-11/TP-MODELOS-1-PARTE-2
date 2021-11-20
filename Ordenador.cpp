@@ -6,25 +6,11 @@ Ordenador::Ordenador(Prenda** grafo, int cantPrendas, int cantIncompat) {
     for (int i = 0 ; i < cantPrendas ; i++){
         this->grafoOrdTiempos.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
     }
-    /*
-    for (int i = cantPrendas-1 ; i >= 0 ; i--){
-        this->grafoOrdTiempos.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
-    }
-     */
-    /*
-    for (int i = 0 ; i < cantPrendas ; i++){
-        cout << grafoOrdTiempos[i] << endl;
-    }*/
     procesar();
 }
 
 void Ordenador::procesar() {
     ordenarGrafoPorTiempos();
-    /*
-    for (int i = 0 ; i < cantPrendas ; i++){
-        cout << grafoOrdTiempos[i] << endl;
-    }//TODO: Quedo bien ordenado!
-     */
     ordenarCadaPrendaPorCompatibilidades();
 }
 
