@@ -10,6 +10,9 @@ private:
     int cantPrendas,cantIncompatib;
     bool* visitados;
     int tiempoLavadoTotal; //Esta variable cambia su valor to-do el tiempo, en ejecucion
+
+    vector<int> vectorPrendasEnLavado;
+
 public:
     Ropa(Prenda** grafo,vector<int> grafoOrdenadoTiempos,int cantPrendas,int cantIncompatib);
 

@@ -9,7 +9,6 @@ Ropa::Ropa(Prenda **grafo, vector<int> grafoOrdenadoTiempos, int cantPrendas, in
     for (int i=1; i < cantPrendas ; i++){
         visitados[i] = false;
     }
-
     /*
     for (int i = 0; i<cantPrendas ; i++){
         cout << grafo[(grafoOrdenadoTiempos[i]-1)]->getNroPrenda() << " ";
@@ -18,9 +17,15 @@ Ropa::Ropa(Prenda **grafo, vector<int> grafoOrdenadoTiempos, int cantPrendas, in
 }
 
 void Ropa::procesar() {
-    int  nroPrendaActual;
+    int  nroPrendaActual, nroLavado = 0;
     while (!seVisitaronTodasLasPrendas()){
+        nroLavado++;
         nroPrendaActual = buscarPrendaARevisar();
+        vectorPrendasEnLavado.push_back(nroPrendaActual);
+        busquedaPrendasEnLavado();
+
+
+
 
         //Ahora que tengo la prenda a revisar, la agarro y la agrego al lavado 1 [nroLavado, una variable],
         // con su tiempo como tiempoLavadoTotal
@@ -39,10 +44,7 @@ void Ropa::procesar() {
         //Debere recorrer el vectorPrendasEnLavado para agregar como atributos a cada una de dichas prendas
         //El nroLavado, que quedo fijo en esta iteracion
         //El tiempoLavado, que se fue actualizando cada vez que se agregaba una prenda al lavado
-
-
-
-
+        vectorPrendasEnLavado.clear();
     }
 }
 
