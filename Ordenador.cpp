@@ -17,11 +17,19 @@ void Ordenador::procesar() {
 void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
     bool intercambio = true;
     int aux,j=0;
+    double ponderado1,ponderado2;
+    double coefCompatib = 0.8;
+    double coefTiempos = 0.2;
     while (intercambio && j < cantPrendas){
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantPrendas-j ; i++){
-            if (grafo[((grafoOrdTiempos[i - 1]) - 1)]->getTiempoLavado() < grafo[((grafoOrdTiempos[i]) - 1)]->getTiempoLavado() ){
+            ponderado1 = grafo[((grafoOrdTiempos[i - 1]) - 1)]->getCantCompatib() * coefCompatib +
+                    grafo[((grafoOrdTiempos[i - 1]) - 1)]->getTiempoLavado() * coefTiempos ;
+            ponderado2 = grafo[((grafoOrdTiempos[i]) - 1)]->getCantCompatib() * coefCompatib +
+                        grafo[((grafoOrdTiempos[i]) - 1)]->getTiempoLavado() * coefTiempos ;
+
+            if (ponderado1 > ponderado2 ){
                 aux = grafoOrdTiempos[i-1];
                 grafoOrdTiempos[i-1] = grafoOrdTiempos[i];
                 grafoOrdTiempos[i] = aux;
@@ -31,7 +39,7 @@ void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
         j++;
     }
 }
-void Ordenador::ordenarCadaPrendaPorCompatibilidades() { //Se ordena el vector con las compatibilidades de mayor a menor
+void Ordenador::ordenarCadaPrendaPorCompatibilidades() { //Se ordena el vector con las compatibilidades de menor a mayor
     for (int i = 0 ; i < cantPrendas ; i++){
         grafo[i]->ordenarCompatibilidades();
     }

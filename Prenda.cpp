@@ -44,11 +44,16 @@ void Prenda::ordenarCompatibilidades() {
     bool intercambio = true;
     int j=0;
     Prenda* aux;
+    double ponderado1,ponderado2;
+    double coefCompatib = 0.8;
+    double coefTiempos = 0.2;
     while (intercambio && j < cantCompatib){
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantCompatib-j ; i++){
-            if (compatib[i-1]->cantCompatib < compatib[i]->cantCompatib ){
+            ponderado1 = ((compatib[i-1]->cantCompatib) * coefCompatib ) +  ((compatib[i-1]->tiempoLavado) * coefTiempos ) ;
+            ponderado2 = ((compatib[i]->cantCompatib) * coefCompatib ) + ((compatib[i]->tiempoLavado) * coefTiempos ) ;
+            if (ponderado1 > ponderado2){
                 aux = compatib[i-1];
                 compatib[i-1] = compatib[i];
                 compatib[i] = aux;

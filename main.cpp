@@ -19,6 +19,5 @@ int main() {
     delete lavados;
     delete ordenador;
     delete carga;
-
     return 0;
 }
