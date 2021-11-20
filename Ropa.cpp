@@ -29,8 +29,8 @@ void Ropa::procesar() {
         cantPrendasEnLavado++;
         visitados[nroPrendaActual-1] = true;
         tiempoTotalPorLavado = grafo[nroPrendaActual - 1]->getTiempoLavado();
-        cout << "Se acepta la primer prenda del lavado " << nroLavado << endl;
-        cout << "Esa prenda es " << nroPrendaActual << endl;
+        //cout << "Se acepta la primer prenda del lavado " << nroLavado << endl;
+        //cout << "Esa prenda es " << nroPrendaActual << endl;
         realizarUnLavado();
 
         //if (nroLavado == 2){
@@ -60,14 +60,17 @@ void Ropa::procesar() {
         //El nroLavado, que quedo fijo en esta iteracion
         //El tiempoLavado, que se fue actualizando cada vez que se agregaba una prenda al lavado
 
-        if (nroLavado == 44){
+
+        /*if (nroLavado == 44){
             cout << " ";
         }
 
         cout << "Se visitaron todas las prendas? " << seVisitaronTodasLasPrendas() << endl;
         for (int h = 0 ; h < cantPrendas ; h++){
             cout << grafo[h]->getNroPrenda() << " = " << visitados[h] << endl;
-        }
+        }*/
+
+
         tiempoAcum += tiempoTotalPorLavado;
     }
 }
@@ -98,39 +101,45 @@ void Ropa::realizarUnLavado() {
 
                 seConsiguioUnaPrendaNueva = true;
 
+                /*
                 cout << "La prenda nro. " << compatibilidades[i]->getNroPrenda() << " es agregada al lavado " <<
                 " por ser compatible con las prendas: ";
                 for (int i = 0 ; i < cantPrendasEnLavado ; i++){
                     cout << vectorPrendasEnLavado[i] << " ";
                 } cout << endl;
+                */
 
                 //Se agrega la prenda al lavado
                 this->vectorPrendasEnLavado.push_back(compatibilidades[i]->getNroPrenda());
                 cantPrendasEnLavado++;
 
-                cout << "Se agrego la prenda " << vectorPrendasEnLavado[cantPrendasEnLavado-1] << " al vectorPrendasLavado\n[";
-                for (int k=0 ; k< cantPrendasEnLavado ; k++){
-                    cout << vectorPrendasEnLavado[k] << " ";
-                }cout << " ]\n";
+                //cout << "Se agrego la prenda " << vectorPrendasEnLavado[cantPrendasEnLavado-1] << " al vectorPrendasLavado\n[";
+                //for (int k=0 ; k< cantPrendasEnLavado ; k++){
+                    //cout << vectorPrendasEnLavado[k] << " ";
+                //}cout << " ]\n";
 
                 //Actualizacion de duracion del lavado
                 if (compatibilidades[i]->getTiempoLavado() > tiempoTotalPorLavado){
                     tiempoTotalPorLavado = compatibilidades[i]->getTiempoLavado();
-                    cout << "Se actualizo el tiempo de lavado!" << endl;
+                    //cout << "Se actualizo el tiempo de lavado!" << endl;
                 }
-                cout << "El tiempo de lavado en mins es de " << tiempoTotalPorLavado << endl;
+
+                //cout << "El tiempo de lavado en mins es de " << tiempoTotalPorLavado << endl;
 
                 //Se agrega dicha prenda en el vector de visitados
                 visitados[compatibilidades[i]->getNroPrenda()-1] = true;
 
                 //ActualizarNroPrenda
                 nroPrendaActual = compatibilidades[i]->getNroPrenda();
-                cout << "La nueva prenda actual es " << nroPrendaActual << endl;
-                cout << "---------------------fin ciclo de prenda agregada" << endl;
+
+                //cout << "La nueva prenda actual es " << nroPrendaActual << endl;
+                //cout << "---------------------fin ciclo de prenda agregada" << endl;
             }
             i++;
             if (i == cantCompatib) {
                 terminoLavado = true;
+
+                //TODO: SE PROCESAN TODAS LAS PRENDAS!!! EUREKAAAAAA
                 cout << "Se termino el lavado nro " << nroLavado << endl;
                 cout << "Con un tiempo de minutos " << tiempoTotalPorLavado << endl;
                 cout << "Que tiene a las prendas: [ ";
