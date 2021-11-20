@@ -129,8 +129,4 @@ int Carga::getCantIncompat() {
 
 Carga::~Carga() {
     archivo.close();
-    for (int i=1; i < cantPrendas ; i++){
-        delete grafo[i];
-    }
-    delete grafo; //TODO SACAR DE ACA
 }

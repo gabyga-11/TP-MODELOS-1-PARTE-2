@@ -16,6 +16,12 @@ public:
     void ordenarGrafoPorTiempos(); //Ordena de mayor a menor los grafos por tiempos
 
     void ordenarCadaPrendaPorCompatibilidades();
+
+    Prenda** getGrafo();
+
+    vector<int> getOrdenGrafo();
+
+    ~Ordenador();
 };
 
 

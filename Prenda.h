@@ -10,6 +10,7 @@ private:
     int cantCompatib; //Cantidad de compatibilidades de la prenda
     int tiempoLavado;
     int nroLavado;
+    int tiempoLavadoTotal;
 public:
     Prenda(int nroPrenda);
 
@@ -25,13 +26,11 @@ public:
 
     void setNroPrenda();
 
-    int getTiempoLavado();
-
     void setTiempoLavado(int tiempoLavado);
 
     int getCantCompatib();
 
-    int getLavado();
+    int getTiempoLavado();
 
     ~Prenda();
 };

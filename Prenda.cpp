@@ -5,6 +5,7 @@ Prenda::Prenda(int nroPrenda) {
     cantCompatib = 0;
     compatib = nullptr;
     nroLavado = 0;
+    tiempoLavadoTotal = 0;
 }
 
 void Prenda::conexionar(Prenda *compatible) {
@@ -98,7 +99,7 @@ int Prenda::getCantCompatib() {
     return cantCompatib;
 }
 
-int Prenda::getLavado() {
+int Prenda::getTiempoLavado() {
     return this->tiempoLavado;
 }
 

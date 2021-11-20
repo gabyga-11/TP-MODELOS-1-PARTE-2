@@ -10,8 +10,6 @@ Ordenador::Ordenador(Prenda** grafo, int cantPrendas, int cantIncompat) {
     for (int i = cantPrendas-1 ; i >= 0 ; i--){
         this->grafoOrdTiempos.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
     }
-    /*
-
      */
     /*
     for (int i = 0 ; i < cantPrendas ; i++){
@@ -25,18 +23,19 @@ void Ordenador::procesar() {
     /*
     for (int i = 0 ; i < cantPrendas ; i++){
         cout << grafoOrdTiempos[i] << endl;
-    }*/ //TODO: Quedo bien ordenado!
+    }//TODO: Quedo bien ordenado!
+     */
     ordenarCadaPrendaPorCompatibilidades();
 }
 
-void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort
+void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
     bool intercambio = true;
     int aux,j=0;
     while (intercambio && j < cantPrendas){
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantPrendas-j ; i++){
-            if (grafo[((grafoOrdTiempos[i-1])-1)]->getLavado() > grafo[((grafoOrdTiempos[i])-1)]->getLavado() ){
+            if (grafo[((grafoOrdTiempos[i - 1]) - 1)]->getTiempoLavado() < grafo[((grafoOrdTiempos[i]) - 1)]->getTiempoLavado() ){
                 aux = grafoOrdTiempos[i-1];
                 grafoOrdTiempos[i-1] = grafoOrdTiempos[i];
                 grafoOrdTiempos[i] = aux;
@@ -50,4 +49,15 @@ void Ordenador::ordenarCadaPrendaPorCompatibilidades() { //Se ordena el vector c
     for (int i = 0 ; i < cantPrendas ; i++){
         grafo[i]->ordenarCompatibilidades();
     }
+}
+
+Prenda ** Ordenador::getGrafo() {
+    return grafo;
+}
+vector<int> Ordenador::getOrdenGrafo() {
+    return this->grafoOrdTiempos;
+}
+
+Ordenador::~Ordenador() {
+    grafo = nullptr;
 }
