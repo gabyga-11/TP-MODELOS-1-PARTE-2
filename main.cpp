@@ -11,8 +11,6 @@ int main() {
 
     Ropa* lavados = new Ropa(ordenador->getGrafo(),ordenador->getOrdenGrafo(),carga->getCantPrendas(),carga->getCantIncompat());
 
-
-
     delete lavados;
     delete ordenador;
     delete carga;

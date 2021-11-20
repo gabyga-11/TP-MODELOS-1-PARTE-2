@@ -32,6 +32,14 @@ public:
 
     int getTiempoLavado();
 
+    Prenda** getVectorCompatib();
+
+    bool esCompatibleCon(Prenda* prendaPosibleParaAgregar);
+
+    void setTiempoTotalLavado(int tiempoLavadoTotal);
+
+    void setNroLavado(int nroLavado);
+
     ~Prenda();
 };
 

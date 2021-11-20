@@ -103,6 +103,31 @@ int Prenda::getTiempoLavado() {
     return this->tiempoLavado;
 }
 
+Prenda ** Prenda::getVectorCompatib() {
+    return this->compatib;
+}
+
+bool Prenda::esCompatibleCon(Prenda *prendaPosibleParaAgregar) {
+    bool sePuedeAgregar = false;
+    int i = 0;
+    while (!sePuedeAgregar && i < cantCompatib){
+        if (compatib[i]->getNroPrenda() == prendaPosibleParaAgregar->getNroPrenda() ){
+            sePuedeAgregar = true;
+        } else {
+            i++;
+        }
+    }
+    return sePuedeAgregar;
+}
+
+void Prenda::setTiempoTotalLavado(int tiempoLavadoTotal) {
+    this->tiempoLavadoTotal = tiempoLavadoTotal;
+}
+
+void Prenda::setNroLavado(int nroLavado) {
+    this->nroLavado = nroLavado;
+}
+
 Prenda::~Prenda() {
     for (int i = 0 ; i < cantCompatib; i++){
         compatib[i] = nullptr;
