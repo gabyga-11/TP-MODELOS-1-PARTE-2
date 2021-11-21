@@ -10,7 +10,7 @@ Ropa::Ropa(Prenda **grafo, vector<int> grafoOrdenadoTiempos, int cantPrendas, in
     this->nroLavado = 0;
     this->tiempoAcum = 0;
     visitados = new bool [cantPrendas];
-    for (int i=1; i < cantPrendas ; i++){
+    for (int i=0; i < cantPrendas ; i++){
         visitados[i] = false;
     }
     /*

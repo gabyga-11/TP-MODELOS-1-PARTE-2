@@ -31,8 +31,8 @@ void Escritura::procesar() {
 Escritura::~Escritura() {
     archivo.close();
 
-    for (int i=1; i < cantPrendas ; i++){
+    for (int i=0; i < cantPrendas ; i++){
         delete grafo[i];
     }
-    delete grafo;
+    delete [] grafo;
 }
