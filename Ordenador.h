@@ -6,14 +6,14 @@ class Ordenador {
 private:
     Prenda** grafo;
     int cantPrendas;
-    vector<int> grafoOrdTiempos;
+    vector<int> vectorPrimerPrenda;
 
 public:
     Ordenador(Prenda** grafo, int cantPrendas, int cantIncompat);
 
     void procesar();
 
-    void ordenarGrafoPorTiempos(); //Ordena de mayor a menor los grafos por tiempos
+    void ordenarPrimerPrendaLavado(); //Ordena de mayor a menor los grafos por tiempos
 
     void ordenarCadaPrendaPorCompatibilidades();
 

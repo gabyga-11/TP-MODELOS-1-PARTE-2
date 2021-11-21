@@ -4,27 +4,27 @@ Ordenador::Ordenador(Prenda** grafo, int cantPrendas, int cantIncompat) {
     this->grafo = grafo;
     this->cantPrendas = cantPrendas;
     for (int i = 0 ; i < cantPrendas ; i++){
-        this->grafoOrdTiempos.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
+        this->vectorPrimerPrenda.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
     }
     procesar();
 }
 
 void Ordenador::procesar() {
-    ordenarGrafoPorTiempos();
+    ordenarPrimerPrendaLavado();
     ordenarCadaPrendaPorCompatibilidades();
 }
 
-void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
+void Ordenador::ordenarPrimerPrendaLavado() { //BubbleSort DE MENOR A MAYOR EN COMPATIBILIDADES
     bool intercambio = true;
     int aux,j=0;
     while (intercambio && j < cantPrendas){
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantPrendas-j ; i++){
-            if (grafo[((grafoOrdTiempos[i - 1]) - 1)]->getCantCompatib() > grafo[((grafoOrdTiempos[i]) - 1)]->getCantCompatib() ){
-                aux = grafoOrdTiempos[i-1];
-                grafoOrdTiempos[i-1] = grafoOrdTiempos[i];
-                grafoOrdTiempos[i] = aux;
+            if (grafo[((vectorPrimerPrenda[i - 1]) - 1)]->getCantCompatib() > grafo[((vectorPrimerPrenda[i]) - 1)]->getCantCompatib() ){
+                aux = vectorPrimerPrenda[i - 1];
+                vectorPrimerPrenda[i - 1] = vectorPrimerPrenda[i];
+                vectorPrimerPrenda[i] = aux;
                 intercambio = true;
             }
         }
@@ -41,7 +41,7 @@ Prenda ** Ordenador::getGrafo() {
     return grafo;
 }
 vector<int> Ordenador::getOrdenGrafo() {
-    return this->grafoOrdTiempos;
+    return this->vectorPrimerPrenda;
 }
 
 Ordenador::~Ordenador() {
