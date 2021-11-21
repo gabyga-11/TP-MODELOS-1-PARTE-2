@@ -48,7 +48,9 @@ void Prenda::ordenarCompatibilidades() {
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantCompatib-j ; i++){
-            if (compatib[i-1]->cantCompatib < compatib[i]->cantCompatib ){
+            if (compatib[i-1]->cantCompatib > compatib[i]->cantCompatib ||
+            (compatib[i-1]->cantCompatib == compatib[i]->cantCompatib &&
+                    compatib[i-1]->getTiempoLavado() < compatib[i]->getTiempoLavado())){
                 aux = compatib[i-1];
                 compatib[i-1] = compatib[i];
                 compatib[i] = aux;

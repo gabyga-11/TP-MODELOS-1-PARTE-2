@@ -21,7 +21,7 @@ void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantPrendas-j ; i++){
-            if (grafo[((grafoOrdTiempos[i - 1]) - 1)]->getTiempoLavado() < grafo[((grafoOrdTiempos[i]) - 1)]->getTiempoLavado() ){
+            if (grafo[((grafoOrdTiempos[i - 1]) - 1)]->getCantCompatib() > grafo[((grafoOrdTiempos[i]) - 1)]->getCantCompatib() ){
                 aux = grafoOrdTiempos[i-1];
                 grafoOrdTiempos[i-1] = grafoOrdTiempos[i];
                 grafoOrdTiempos[i] = aux;
