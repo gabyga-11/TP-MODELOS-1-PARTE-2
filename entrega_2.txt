@@ -1,22 +1,36 @@
+Empecemos actualizando con respecto a la entrega anterior. Cuando vi que eran 11000 incompatibilidades, decidi descartar mi programa en
+Python, para realizar todo el codigo desde cero en C++, que es mucho mas potente en terminos de uso de (menos) memoria y su manipulacion.
 
+Las prendas consisten de un "grafo" donde cada dato es una prenda: cada prenda contiene atributos como tiempoLavado, nroPrenda, y otros a
+definir como nroLavado. La conexión del grafo, es decir las aristas, estan representadas por un vector de punteros que apuntan a las
+prendas en el grafo con las que son compatibles. Ej: Si la prenda 1 y la 3 son compatibles, el vector compatibilidades de la prenda 1
+contendra un puntero a la prenda 3, y analogamente en la prenda 3. Al comenzar la carga, se agregan conexiones de todas las prendas a
+todas las prendas, y a medida que se leen las incompatibilidades, se van eliminando del vector compatibilidades de la prenda correspondiente
 
-//Ahora que tengo la prenda a revisar, la agarro y la agrego al lavado 1 [nroLavado, una variable],
-//con su tiempo como tiempoTotalPorLavado
-//Guardo la prenda en un vector dinamico vectorPrendasEnLavado
-
-
-//Me fijo en su vector de punteros de la prenda recien agregada para ESTABLECES PROXIMA PRENDA
-//Sumo al lavado a la prenda no visitada de 0 a n (osea con mas compatibilidades)
-//Que A SU VEZ DEBERA SER COMPATIBLE CON TODAS LAS PRENDAS PREVIAS A LA ULTIMA AGREGADA
-//Para eso, reviso en el vector compatibilidades de la posible prenda nueva
-//Y verifico que esten todas las prendas del vector vectorPrendasEnLavado
-
-
-//SI ENCUENTRO UNA prenda q cumple, la sumo al vectorPrendasEnLavado;
-// y veo si su tiempo es el nuevo tiempoTotalPorLavado
-
-//SI NO ENCUENTRO UNA PRENDA en la ultima prenda agregada, que cumpla las condiciones dichas,
-//Se da por terminado el lavado, lo que significa que
-//Debere recorrer el vectorPrendasEnLavado para agregar como atributos a cada una de dichas prendas
-//El nroLavado, que quedo fijo en esta iteracion
-//El tiempoLavado, que se fue actualizando cada vez que se agregaba una prenda al lavado
+Hay una clase delegativa llamada "Ordenamiento" que se encarga del procedimiento de ordenado del vector dinamico de compatibilidades de
+cada una de las prendas, y del vector que contiene la primer prenda del lavado a visitar. Este ordenamiento de 2 vectores diferentes
+permite probar diferentes metodos y ver resultados en base a la forma de ordenar elegida (hablo mas abajo de esto). Porque luego, la forma
+de fijarse y revisar la proxima prenda a agregar a un lavado va a ser desde el indice 0 hacia el indice n: es decir, el vector ya se
+ordeno por la prioridad elegida, previamente.
+En cuanto al armado del lavado en si, se arranca el lavado recorriendo el vector que define el primer lavado, tomando al primer elemento
+en esa lista que no se haya visitado (esto se hace a traves de un vector dinamico booleano llamado visitado). Se agrega el nroPrenda a un
+vectorPrendasEnLavado. Luego de tener dicho elemento, se revisa su vector compatibilidades y se toma al primer elemento (de 0 a N que no
+se haya visitado). Ademas, debera cumplir que sea compatible con todos las prendas incluidas en vectorPrendasEnLavado.
+-----------
+En un principio, habia elegido que se ordene al vector de la primer prenda en funcion de los tiempos, de Mayor a Menor. Y a los vectores
+compatibilidades de Mayor a menor en funcion de la compatibilidad. O sea, se agarraba primero las prendas mas compatibles y con mayor
+duracion. Resultado: 755 minutos y 44 lavados. Un desastre. Empece entonces a jugar con fuerza bruta, retocando el ordenamiento, para ver
+con qué combinación me daba el mejor resultado. Agregue un segundo factor de ordenamiento para el vector de compatibilidades de cada
+prenda: si es de igual cantidad de compatibilidades se "desempata" con el tiempo, por decirlo de alguna manera. Entonces el mejor
+resultado fue:
+Vector de primer elemento del lavado ordenado por compatibilidades de menor a mayor. Vector de compatibilidades de cada prenda ordenado
+por compatibilidades de menor a mayor, con desempate en funcion del tiempo de lavado de prenda, de mayor a menor. Resultado: 576 minutos y
+32 lavados.
+Tambien probe haciendo una ponderación para el ordenamiento, sin exito. Los resultados a fuerza bruta daban peor que con el resultado
+inicial. Podría haber agregado alguna metodología para que a fuerza iterativa, el programa buscara los coeficientes mas óptimos para este
+problema. Sin embargo; nota a toque personal, he tenido de poco a nulo tiempo desde lo personal para hacer el TP, por haber empezado a
+trabajar (y aun no haber logrado encontrar el equilibro entre universidad y trabajo)
+Estuve investigando sobre optimización multiobjetivo: donde se recalcaba sobre la ponderacion y la eficiencia de Pareto. No me alcanzo mi
+tiempo para poder investigar en profundidad sobre Pareto.
+El resultado inicial esta hecho en la branch main, el resultado mejorado en la branch develop (el subido), y la ponderacion en la branch
+pruebas.
