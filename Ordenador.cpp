@@ -4,17 +4,17 @@ Ordenador::Ordenador(Prenda** grafo, int cantPrendas, int cantIncompat) {
     this->grafo = grafo;
     this->cantPrendas = cantPrendas;
     for (int i = 0 ; i < cantPrendas ; i++){
-        this->grafoOrdTiempos.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
+        this->vectorPrimerLavado.push_back(grafo[i]->getNroPrenda()); //Agrega al final de la lista
     }
     procesar();
 }
 
 void Ordenador::procesar() {
-    ordenarGrafoPorTiempos();
+    ordenarPrimerLavado();
     ordenarCadaPrendaPorCompatibilidades();
 }
 
-void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
+void Ordenador::ordenarPrimerLavado() { //BubbleSort DE MAYOR A MENOR TIEMPO
     bool intercambio = true;
     int aux,j=0;
     double ponderado1,ponderado2;
@@ -24,15 +24,15 @@ void Ordenador::ordenarGrafoPorTiempos() { //BubbleSort DE MAYOR A MENOR TIEMPO
         intercambio = false;
         j = 0;
         for (int i=1 ; i<cantPrendas-j ; i++){
-            ponderado1 = grafo[((grafoOrdTiempos[i - 1]) - 1)]->getCantCompatib() * coefCompatib +
-                    grafo[((grafoOrdTiempos[i - 1]) - 1)]->getTiempoLavado() * coefTiempos ;
-            ponderado2 = grafo[((grafoOrdTiempos[i]) - 1)]->getCantCompatib() * coefCompatib +
-                        grafo[((grafoOrdTiempos[i]) - 1)]->getTiempoLavado() * coefTiempos ;
+            ponderado1 = grafo[((vectorPrimerLavado[i - 1]) - 1)]->getCantCompatib() * coefCompatib +
+                         grafo[((vectorPrimerLavado[i - 1]) - 1)]->getTiempoLavado() * coefTiempos ;
+            ponderado2 = grafo[((vectorPrimerLavado[i]) - 1)]->getCantCompatib() * coefCompatib +
+                         grafo[((vectorPrimerLavado[i]) - 1)]->getTiempoLavado() * coefTiempos ;
 
             if (ponderado1 > ponderado2 ){
-                aux = grafoOrdTiempos[i-1];
-                grafoOrdTiempos[i-1] = grafoOrdTiempos[i];
-                grafoOrdTiempos[i] = aux;
+                aux = vectorPrimerLavado[i - 1];
+                vectorPrimerLavado[i - 1] = vectorPrimerLavado[i];
+                vectorPrimerLavado[i] = aux;
                 intercambio = true;
             }
         }
@@ -49,7 +49,7 @@ Prenda ** Ordenador::getGrafo() {
     return grafo;
 }
 vector<int> Ordenador::getOrdenGrafo() {
-    return this->grafoOrdTiempos;
+    return this->vectorPrimerLavado;
 }
 
 Ordenador::~Ordenador() {
